@@ -1,0 +1,64 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+h1, h2, h3, h4, p, ul, li {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 70%;
+    padding: 0;
+    margin: 0 auto;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.wrapper {
+    min-height:  100%;
+}
+
+button {
+    display: inline-block;
+    padding: 7px 12px;
+    font-weight: 600;
+    line-height: 1.4;
+    text-align: center;
+    text-decoration: none;
+    border: 1px solid currentColor;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+@import 'main';
+
+footer {
+    height: 30px;
+    margin-top: -30px;
+    p {
+        margin: 0;
+        color: #7b8994;
+        a {
+            text-decoration: none;
+            color: #7b8994;
+        }
+    }
+}
+
+.icon {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
+}
+
+@import 'mobile';
+
