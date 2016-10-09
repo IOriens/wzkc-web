@@ -9,7 +9,7 @@ import Upload from './components/Upload'
 import ListItem from './components/ListItem'
 
 // import scss
-import './scss/style.scss'
+import './scss/newStyle.scss'
 
 attachFastClick.attach(document.body)
 

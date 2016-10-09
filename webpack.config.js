@@ -112,7 +112,7 @@ module.exports = {
         'Config': JSON.stringify(isProduction() ? {
             serverURL: "http://wzkc-server.herokuapp.com/api"
         } : {
-                serverURL: "http://localhost:8091/api"
+                serverURL: "http://localhost:5001/api"
             })
     }
 }
