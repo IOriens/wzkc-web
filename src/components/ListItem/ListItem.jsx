@@ -1,5 +1,5 @@
 import React from 'react'
-import Item from '../components/Item'
+import Item from '../Item/Item'
 import Config from 'Config'
 
 class ListItem extends React.Component {
@@ -43,7 +43,7 @@ class ListItem extends React.Component {
 
                     this.setState({
                         // messages: xhr.responseText
-                        messages: JSON.parse(xhr.responseText)
+                        messages: JSON.parse(xhr.responseText).reverse()
                     })
                     
                 } else {
@@ -58,8 +58,7 @@ class ListItem extends React.Component {
     render() {
         return (
             <div>
-                <h2 className="nav-title">显示记录</h2>
-                <ul className="messages">{this.state.messages.reverse().map((item)=> {
+                <ul className="messages">{this.state.messages.map((item)=> {
                     return <Item key={item.time} item={item} handleDeletion={this.handleDeletion.bind(this)}/>
                 })}</ul>
             </div>

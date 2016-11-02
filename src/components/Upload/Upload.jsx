@@ -1,5 +1,7 @@
-import React  from 'react'
+import React from 'react'
 import Config from 'Config'
+
+import './Upload.scss'
 
 class Upload extends React.Component {
     constructor() {
@@ -48,13 +50,21 @@ class Upload extends React.Component {
         this.setState({ submited: false, text: e.target.value })
     }
 
+    handleReset(e) {
+        e.preventDefault()
+        this.setState({ text: '' })
+    }
+
     render() {
         return (
             <div className="upload">
-                <h2 className="nav-title">上传信息</h2>
-                <form onSubmit={e => this.handleSubmit(e) }>
-                    <textarea placeholder="在这里输入信息哦" onChange={ e => this.handleChange(e) } value={this.state.text}/>
-                    <button className="submit-btn" >Submit</button> <span>{this.state.submited ? "信息上传成功" : "信息未上传"}</span>
+                <form onSubmit={e => this.handleSubmit(e)}>
+                    <textarea placeholder="在这里输入信息哦" onChange={e => this.handleChange(e)} value={this.state.text} />
+                    <div className="form-control">
+                        <span>{this.state.submited ? "信息上传成功" : "信息未上传"}</span>
+                        <button className="submit-btn">提交</button>
+                        <button className="submit-btn" onClick={this.handleReset.bind(this)}>重置</button>
+                    </div>
                 </form>
             </div>
         )
