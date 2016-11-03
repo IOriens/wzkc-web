@@ -1,31 +1,39 @@
 $height: 57px;
-
 header {
-   background-color: #46476F;
-
-   .header-wrapper {
-       height: $height;
-       width: 680px;
-       margin: 0 auto;
-       position: relative;
-   }
-
-   .site-logo {
-       margin-left: 36px;
-       font-size: 36px;
-       color: #fff;
-       line-height: $height;
-       vertical-align: bottom;
-   }
-
-   .user-avatar {
-       border-radius: 50%;
-       position: absolute;
-       height: 46px;
-       width: 46px;
-       top: 50%;
-       margin-top: -23px;
-       right: 36px;
-   }
+    background-color: #46476F;
+    .header-wrapper {
+        height: $height;
+        width: 680px;
+        margin: 0 auto;
+        position: relative;
+    }
+    .site-logo {
+        margin-left: 36px;
+        font-size: 36px;
+        color: #fff;
+        line-height: $height;
+    }
+    .user-avatar {
+        overflow: hidden;
+        border-radius: 50%;
+        position: absolute;
+        height: 46px;
+        width: 46px;
+        top: 50%;
+        margin-top: -23px;
+        right: 36px;
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
 }
 
+@media (max-width: 700px) {
+    header {
+        width: 100%;
+        .header-wrapper {
+            width: 100%;
+        }
+    }
+}

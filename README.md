@@ -6,6 +6,8 @@
 - 在kindle上传链接
 
 ## Schedules
+- [x] a标签在移动端文字过长会有截断（word-wrap: break-word;）
+- [x] 移动端适配
 - [ ] 提交后内容自动刷新（跨组件通信，redux。。。）
 - [ ] 登录注册
 - [ ] react router4（现在不用router了）

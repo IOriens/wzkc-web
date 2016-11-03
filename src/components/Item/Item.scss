@@ -4,11 +4,9 @@
     background-color: #fff;
     padding: 30px;
     overflow: hidden;
-
     h2 {
         font-size: 20px;
         margin-bottom: 30px;
-
         a {
             color: #2895F1;
             &:hover {
@@ -16,14 +14,12 @@
             }
         }
     }
-
     .content-time {
         color: #C1C4D1;
         font-size: 16px;
         display: block;
         float: left;
     }
-
     .delete-btn {
         font-size: 16px;
         float: right;
@@ -31,7 +27,6 @@
         background-color: #fff;
         border: none;
         display: none;
-
         &:hover {
             cursor: pointer;
         }
@@ -41,5 +36,10 @@
             display: block;
         }
     }
+}
 
+@media (max-width: 700px) {
+    .content {
+        width: 100%;
+    }
 }

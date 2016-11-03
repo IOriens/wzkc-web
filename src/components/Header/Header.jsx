@@ -12,8 +12,8 @@ class Header extends Component {
             <header>
                 <div className="header-wrapper">
                     <icon className="site-logo">T</icon>
-                    <a href="https://github.com/IOriens/wzkc-web">
-                    <img className="user-avatar" src={require('../../img/favicon.ico')} />
+                    <a className="user-avatar" href="https://github.com/IOriens/wzkc-web">
+                        <img src={require('../../img/favicon.ico')} />
                     </a>
                 </div>
             </header>
