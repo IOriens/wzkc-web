@@ -11,7 +11,7 @@ const ifaces = os.networkInterfaces();
 const ip = require('ip')
 
 
-
+// Enviroment Checking
 var isProduction = function () {
     return process.env.NODE_ENV === 'production';
 };
@@ -29,6 +29,8 @@ var plugins = [
         // jQuery: 'jquery',
         // 'window.jQuery': 'jquery'
     }),
+
+    
     new webpack.optimize.CommonsChunkPlugin(/* chunkName= */'vendor', /* filename= */'vendor.bundle.js'),
 
     new HtmlWebpackPlugin({

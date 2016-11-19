@@ -42,5 +42,8 @@
 @media (max-width: 700px) {
     .content {
         width: 100%;
+        .delete-btn {
+            display: block;
+        }
     }
 }

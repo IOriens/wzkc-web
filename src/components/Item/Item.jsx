@@ -20,19 +20,30 @@ class Item extends React.Component {
     getMessage() {
         let message = this.props.item.message
 
-        //http://blog.mattheworiordan.com/post/13174566389/url-regular-expression-for-links-with-or-without  
-        const urlReg = /((([A-Za-z]{3,9}:(?:\/\/)?)(?:[\-;:&=\+\$,\w]+@)?[A-Za-z0-9\.\-]+|(?:www\.|[\-;:&=\+\$,\w]+@)[A-Za-z0-9\.\-]+)((?:\/[\+~%\/\.\w\-_]*)?\??(?:[\-\+=&;%@\.\w_]*)#?(?:[\.\!\/\\\w]*))?)/g
+        // http://www.cnblogs.com/554006164/archive/2009/06/16/1504160.html
+        var strRegex = "^((https|http|ftp|rtsp|mms)?://)"
+            + "?(([0-9a-z_!~*'().&=+$%-]+: )?[0-9a-z_!~*'().&=+$%-]+@)?" //ftp的user@  
+            + "(([0-9]{1,3}\.){3}[0-9]{1,3}" // IP形式的URL- 199.194.52.184  
+            + "|" // 允许IP和DOMAIN（域名） 
+            + "([0-9a-z_!~*'()-]+\.)*" // 域名- www.  
+            + "([0-9a-z][0-9a-z-]{0,61})?[0-9a-z]\." // 二级域名  
+            + "[a-z]{2,6})" // first level domain- .com or .museum  
+            + "(:[0-9]{1,4})?" // 端口- :80  
+            + "((/?)|" // a slash isn't required if there is no file name  
+            + "(/[0-9a-z_!~*'().;?:@&=+$,%#-]+)+/?)$";
+        const urlReg = new RegExp(strRegex, 'g')
 
         function convert(match) {
+
+            // Check if the url begin with http 
+            const protocolReg = /^https?/i
+            if (!match.match(protocolReg)) {
+                match = 'http://' + match
+            }
+
             let temp = `<a href="${match}" target="_blank">${match}</a>`
             return temp
         }
-
-        // if(urlReg.test(message)) {
-        //     return (<a href={message} target="_blank">{message}</a>)
-        // } else {
-        //     return message
-        // }   
 
         return <h2 dangerouslySetInnerHTML={{ __html: message.replace(urlReg, convert) }}></h2>
     }
