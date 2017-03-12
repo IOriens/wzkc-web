@@ -7,6 +7,14 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const OpenBrowserPlugin = require('open-browser-webpack-plugin')
 const ip = require('ip')
 
+const postcssOptions = {
+  plugins: function () {
+    return [
+      autoprefixer
+    ]
+  }
+}
+
 // Enviroment Checking
 var isProduction = function () {
   return process.env.NODE_ENV === 'production'
@@ -25,7 +33,10 @@ var plugins = [
         // 'window.jQuery': 'jquery'
   }),
 
-  new webpack.optimize.CommonsChunkPlugin(/* chunkName= */'vendor', /* filename= */'vendor.bundle.js'),
+  new webpack.optimize.CommonsChunkPlugin({
+    name: 'vendor',
+    filename: 'vendor.bundle.js'
+  }),
 
   new HtmlWebpackPlugin({
     template: path.join(__dirname, 'src/index.html')
@@ -38,14 +49,22 @@ var loaders = [
   {
     test: /\.jsx?$/,
     exclude: /node_modules/,
-    use: 'babel',
+    loader: 'babel-loader',
     query: {
-      presets: ['latest', 'react']
+      presets: ['env', 'react']
     }
   }, {
     test: /\.(ico|gif|png|jpg|jpeg|svg|webp)$/,
         // loaders: ["url?limit=1024&name=img2/[name].[ext]"],
-    loaders: ['url?limit=1024&name=/[path][name].[ext]'],
+    use: [
+      {
+        loader: 'url-loader',
+        options: {
+          limit: 1024,
+          name: '/[path][name].[ext]'
+        }
+      }
+    ],
     exclude: /node_modules/
   }
 ]
@@ -60,21 +79,32 @@ if (isProduction()) {
         new ExtractTextPlugin('css/style.css')
     )
 
-  loaders.push(
-    {
-      test: /\.scss$/,
-      loader: ExtractTextPlugin.extract('style', 'css!sass', 'postcss')
-    }
-    )
+  loaders.push({
+    test: /\.scss$/,
+    use: ExtractTextPlugin.extract({
+      fallback: 'style',
+      use: [
+        'css-loader',
+        'sass-loader',
+        {
+          loader: 'postcss-loader',
+          options: postcssOptions
+        }
+      ]
+    })
+  })
 } else {
-  loaders.push(
-    {
-      test: /\.scss$/,
-      exclude: /node_modules/,
+  loaders.push({
+    test: /\.scss$/,
+    exclude: /node_modules/,
             // loader: 'style!css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss!sass'
-      loader: 'style!css!sass'
-    }
-    )
+    use: [
+      'style-loader', // creates style nodes from JS strings
+      'css-loader', // translates CSS into CommonJS
+      'sass-loader' // compiles Sass to CSS
+      // 'postcss-loader' // add prefix
+    ]
+  })
 }
 
 module.exports = {
@@ -90,11 +120,10 @@ module.exports = {
   module: {
     rules: loaders
   },
-  postcss: [autoprefixer],
   resolve: {
-    extensions: ['', '.js', '.jsx', '.es6'],
+    extensions: ['.js', '.jsx', '.es6'],
         // root: path.join(__dirname, '/app/js-es6/'),
-    modulesDirectories: ['node_modules']
+    modules: ['node_modules']
   },
   plugins: plugins,
   devServer: {

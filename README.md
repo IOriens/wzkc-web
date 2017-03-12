@@ -1,12 +1,22 @@
 ## Temp Text（WEB端 - v2.0） 
 跨平台文字信息传递 [http://wenzikuaichuan.herokuapp.com/](http://wenzikuaichuan.herokuapp.com/)
 
-## Running it
+## How to run it
+```
+# set WZKC_DBLINK config point to a mongodblink (you can also use local db link)
+export WZKC_DBLINK=mongodb://<user>:<password>@xxxxxx.mlab.com:xx/xxxxxx
+
+# run server application
+# see instruction on [wzkc-server](https://github.com/IOriens/wzkc-server)
+
+# run dev server 
+npm run dev
+```
 
 
 ## 使用场景 
 - 代替qq传输文字（比如说不能使用，不想使用）
-- 在kindle上传链接
+- 在kindle打开链接
 
 ## Schedules
 - [x] a标签在移动端文字过长会有截断（word-wrap: break-word;）
