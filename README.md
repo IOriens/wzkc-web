@@ -1,15 +1,13 @@
-## Temp Text（WEB端 - v2.0） 
+## Simple Note（WEB - v2.0） 
 跨平台文字信息传递 [http://wenzikuaichuan.herokuapp.com/](http://wenzikuaichuan.herokuapp.com/)
 
 ## How to run it
+You should run server side first: [wzkc-server](https://github.com/IOriens/wzkc-server)
 ```
-# set WZKC_DBLINK config point to a mongodblink (you can also use local db link)
-export WZKC_DBLINK=mongodb://<user>:<password>@xxxxxx.mlab.com:xx/xxxxxx
+# install deps (remember to use proxy in china)
+npm i
 
-# run server application
-# see instruction on [wzkc-server](https://github.com/IOriens/wzkc-server)
-
-# run dev server 
+# run web application 
 npm run dev
 ```
 
