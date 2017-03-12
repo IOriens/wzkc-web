@@ -6,23 +6,22 @@ import Upload from './Upload/Upload'
 require('./Main.scss')
 
 class Main extends React.Component {
-    componentWillMount () {
-        let lnk = document.createElement('link')
-        lnk.rel="short icon"
-        lnk.href= require("../img/favicon.ico")    
-        document.getElementsByTagName('head')[0].appendChild(lnk)
-        // console.log('debug','favicon load cmp')
-    }
+  componentWillMount () {
+    let lnk = document.createElement('link')
+    lnk.rel = 'short icon'
+    lnk.href = require('../img/favicon.ico')
+    document.getElementsByTagName('head')[0].appendChild(lnk)
+  }
 
-    render() {
-        return (
-            <div>
-                <Header />
-                <Upload />
-                <ListItem />
-            </div>
-        )
-    }
+  render () {
+    return (
+      <div>
+        <Header />
+        <Upload />
+        <ListItem />
+      </div>
+    )
+  }
 }
 
 export default Main

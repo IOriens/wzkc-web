@@ -51,7 +51,8 @@ var loaders = [
     exclude: /node_modules/,
     loader: 'babel-loader',
     query: {
-      presets: ['env', 'react']
+      presets: ['env', 'react'],
+      plugins: ['transform-object-rest-spread']
     }
   }, {
     test: /\.(ico|gif|png|jpg|jpeg|svg|webp)$/,
@@ -111,7 +112,7 @@ module.exports = {
   context: path.join(__dirname, 'src'),
   entry: {
     'index': './index.js',
-    'vendor': ['react', 'fastclick']
+    'vendor': ['react', 'react-router', 'react-dom', 'fastclick']
   },
   output: {
     path: path.join(__dirname, 'dist'),

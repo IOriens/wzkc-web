@@ -16,6 +16,11 @@ npm run dev
 - 代替qq传输文字（比如说不能使用，不想使用）
 - 在kindle打开链接
 
+## State Design Process
+1. Design the state tree.
+2. List associate actions
+3. Implement reducers
+
 ## Schedules
 - [x] a标签在移动端文字过长会有截断（word-wrap: break-word;）
 - [x] 移动端适配
