@@ -1,8 +1,18 @@
 import * as Actions from '../actions/index'
 
+
+
+
+const FETCHING_STATE = {
+  NOT_FETCHING: 0,
+  FETCHING: 1,
+  DONE_FETCHING: 2
+}
+
 const initState = {
   inputText: '', // textarea input
   uploadFlag: 0, // 0=notUpload, 1=uploading, 2=uploadsuccess
+  fetchingNotes: FETCHING_STATE.NOT_FETCHING,
   uplpadTime: '',
   itemList: [] // notes
 }
