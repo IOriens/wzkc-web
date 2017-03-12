@@ -1,6 +1,9 @@
 ## Temp Text（WEB端 - v2.0） 
 跨平台文字信息传递 [http://wenzikuaichuan.herokuapp.com/](http://wenzikuaichuan.herokuapp.com/)
 
+## Running it
+
+
 ## 使用场景 
 - 代替qq传输文字（比如说不能使用，不想使用）
 - 在kindle上传链接
